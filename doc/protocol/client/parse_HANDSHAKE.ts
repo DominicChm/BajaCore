@@ -1,5 +1,5 @@
 import {IClientInformation} from "./interfaces/IClientInformation";
-import {c_string} from "../../../C-Types/c_string";
+import {c_string} from "bc/C-Types/c_string";
 
 /** Parses buffers in the format of <OP:uint8><TYPE:cString><UID:cString>
  */

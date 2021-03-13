@@ -1,11 +1,11 @@
-#Overview
-##Howdy! This repo is currently under development and is probably completely broken! Don't be surprised if it bursts into flames the second you glance at it. 
+# Overview
+## Howdy! This repo is currently under development and is probably completely broken! Don't be surprised if it bursts into flames the second you glance at it. 
 This is the software that's meant to run data collection on CP Baja's car. 
 
-#General Info
+# General Info
 There isn't much to say, aside from this is an extraordinarily ambitious project written in Typescript. 
 
-#Comically Long Todo 
+# Comically Long Todo 
 - [ ] Tests 
 - [ ] C-type manipulation library
     - [ ] All primitive types implemented (only has `uint8` and `uint16` for testing)

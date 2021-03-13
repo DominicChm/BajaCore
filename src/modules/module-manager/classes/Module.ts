@@ -9,6 +9,5 @@ export abstract class Module extends EventEmitter {
     }
 
     static verifyImplementation() {
-        const staticProps =
     }
 }

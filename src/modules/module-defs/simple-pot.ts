@@ -38,6 +38,3 @@ const pot_var =
             },
         ]
     }
-
-
-const def

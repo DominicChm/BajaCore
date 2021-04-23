@@ -7,13 +7,14 @@ There isn't much to say, aside from this is an extraordinarily ambitious project
 
 # Comically Long Todo 
 - [ ] Tests 
-- [ ] C-type manipulation library
-    - [ ] All primitive types implemented (only has `uint8` and `uint16` for testing)
+- [x] C-type manipulation library - Published on NPM as ``c-type-util``
+    - [x] All primitive types implemented
     - [x] Arrays
     - [x] Strings
     - [x] Framework implemented
 
 - [ ] Module Manager
+    - [ ] Variable-length variable indexing (support 16-bit var index)
     - [ ] Event Firing
     - [ ] Protocol Parsers
         - [ ] Handshake (compose)

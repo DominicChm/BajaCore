@@ -3,8 +3,8 @@ import {Module} from "./Module";
 import {logger} from "../../logging";
 import {ISystemSchema} from "../interfaces/ISystemSchema";
 import {ModuleConnection} from "./ModuleConnection";
-import {doHandshake} from "../protocol/functions/doHandshake";
-import {Server as WSServer, WebSocket}  from "ws";
+import {doHandshake} from "../../protocol/functions/doHandshake";
+import WebSocket  from "ws";
 
 const log = logger("Module Manager");
 
@@ -24,7 +24,7 @@ class ModuleManager {
 
     uid_map: { [key: string]: Module } = {};
 
-    private readonly wss: WSServer;
+    private readonly wss: WebSocket.Server;
 
     constructor() {
         this.WS_PORT = 81;
@@ -32,7 +32,7 @@ class ModuleManager {
         this.connections = new Array(65535).fill(null); //Connections tracks all possible
         this.uid_map = {};
 
-        this.wss = new WSServer({port: this.WS_PORT});
+        this.wss = new WebSocket.Server({port: this.WS_PORT});
         this.wss.on("connection", this.onConnection.bind(this));
     }
 
@@ -60,26 +60,6 @@ class ModuleManager {
 
     }
 
-    onMessage(msg: Buffer | string, source: ISource) {
-        const moduleInstance: Module = this.ip_map[source.ip]
-
-        //Just check if module instance exists for development. TODO: Remove checks - shouldn't be needed.
-        if (!moduleInstance) {
-            log("NO MODULE INSTANCE FOUND??????", "error");
-        }
-
-        if (typeof msg === "string" && moduleInstance) {
-            log(`MESSAGE FROM ${source.ip}: ${msg}`)
-
-        } else if (msg instanceof Buffer  && moduleInstance) {
-            moduleInstance.feed(msg);
-        }
-    }
-
-    onClose() {
-
-    }
-
     loadSystemSchema(schema: ISystemSchema) {
 
         //Clear both maps.
@@ -100,10 +80,6 @@ class ModuleManager {
 
     getByUid(uid) {
         return this.uid_map[uid];
-    }
-
-    getBySource(source) {
-        return this.uid_map[source.uid];
     }
 
     registerDefinition(def: IModuleDefinition) {

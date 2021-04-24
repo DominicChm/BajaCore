@@ -1,7 +1,8 @@
 import {Module} from "../module-manager/classes/Module";
-import {uint8} from "../C-Types/ctypes/uint8";
+import {uint8} from "c-type-util";
+import {IClientVariableDefinition} from "../module-manager/interfaces/IVariableDefinition";
 
-const pot_var =
+const pot_var: IClientVariableDefinition =
     {
         symbol: "pot_val",
         readable_name: "Potentiometer Value",
@@ -16,7 +17,7 @@ const pot_var =
                 symbol: "normalized",
                 readable_name: "Normalized Value",
                 description: "The value of the potentiometer, normalized 0 - 1",
-                convert: (raw_val, variable_definition) => {
+                convert: (raw_val: number, variable_definition) => {
                     return (raw_val - variable_definition.abs_min) / (variable_definition.abs_max - variable_definition.abs_min);
                 }
             },

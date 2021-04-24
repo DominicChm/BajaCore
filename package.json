@@ -17,7 +17,7 @@
     "@types/winston": "^2.4.4",
     "@types/ws": "^7.4.0",
     "bc": "file:src\\modules",
-    "c-type-util": "^1.0.3",
+    "c-type-util": "^1.0.4",
     "influx": "^5.6.3",
     "ipaddr.js": "^2.0.0",
     "joi": "^17.3.0",
